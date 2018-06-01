@@ -1,4 +1,30 @@
 \section{introduction}
+The design of Cyber-Physical Systems (CPSs) has become increasingly complex and challenging. The developer should face numerous aspects, and each aspect has their features and characteristics, as well as special modeling languages and platforms. The collaborative design is a potential approach to deal with the rise of the complexity of system design, attracting more and more attention from the industry and the scientific community. The collaborative design relied on Model-driven engineering (MDE) with involving several modeling languages (such as SysML, AADL, etc.) and using principles of separation of concerns as well as domain-specific languages (DSL). It makes stakeholders from diverse domains to work in a coordinated manner on different aspects of the system. It could help in reducing the gap between heterogeneous domains and making diverse expertise work together to produce a coherent and complete system. However, we are not able to integrate all of them into a mono design platform. Hence, we proposed a new approach to blending them seamlessly and extended their capabilities without extending development platform. 
+
+
+Our approach works at the high-level and early stage of development. 
+
+
+Therefore, there is a need for collaborative platforms to allow modelers to work together. We proposed a new approach to blending different languages seamlessly by manipulating metamodel with a set of transformation operators at the high-level and early stage of development. The process starts from a SysML system model, developed according to the platform-based design (PBD) paradigm, in which a functional model of the system (SW) is paired to a model of the execution platform (HW). Subsystems are refined as AADL models. In turn, AADL models are implemented as code and transfer to model-checker to perform verification and validation respectively. We illustrate our approach with an experimental of (engine??) design processes represented as scenarios.
+
+
+
+
+
+The conception of multi-view design has been proposed to respond to currently complex system's requirements. It relied on Model-driven engineering (MDE) with involving several modeling languages (such as SysML, AADL, etc.) and using principles of separation of concerns as well as domain-specific languages (DSL) to make stakeholders from diverse domains to work in a coordinated manner on different aspects of the system. It could help in reducing the gap between heterogeneous domains and making diverse expertise work together to produce a coherent and complete system. Therefore, there is a need for collaborative platforms to allow modelers to work together. We proposed a new approach to blending different languages seamlessly by manipulating metamodel on the high-level and early stage of development. Firstly, we are established in engineering framework (Capella) which adopts SysML as a modeling language. Furthermore, we proposed a set of transformation operators that can construct an interpretation system to translate designs into AADL develop environment (OASTE) automatically, and then it can refine models and performance verification and validation respectively. We illustrate our approach with an experimental of (engine??) design processes represented as scenarios.
+
+
+The process start from a SysML system model, developed according to
+the platform-based design (PBD) paradigm, in which a functional model
+of the system is paired to a model of the execution platform. Subsystems
+are refined as Simulink models or hand coded in C++. In turn, Simulink
+models are implemented as software code or firmware on FPGA, and an
+automatic generation of the implementation is obtained. Based on the
+SysML system architecture specification, our framework drives the gener-
+ation of Simulink models with consistent interfaces, allows the automatic
+generation of the communication code among all subsystems (including
+the HW-FW interface code).
+
 The conception of multi-view design has been proposed to respond to currently complex system's requirements. It relied on Model-based approach (MBA) and involved several modeling languages (such as SysML, AADL, etc.). However, we are not able to integrate all of them into a mono design platform. Hence, we proposed a new approach to blending them seamlessly and extended their capabilities without extending development platform, that we named co-design operation. Firstly, we are established in engineering framework --Capella which adopts SysML as a modeling language. Furthermore, we proposed a set of transformation operators that can construct an interpretation system to automatically translate  Capella designs into AADL develop environment (OASTE), and then it can refine models and performance verification and validation respectively. We illustrate our approach with an experimental of (engine??) design processes represented as scenarios.
 
 
