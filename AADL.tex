@@ -11,7 +11,7 @@ There are three kind of components in AADL:
 \end{enumerate}
 
 
-Each category of component includes component type and component implementation. The type is a specification of the external interface. A component type contains features, flow specifications, property associations. Component type defines the communicational port, while component implementation specifies subcomponent and the interactive among the subcomponents. The features of AADL are designed to model the communication between different components. It is composed of \textbf{event} port, \textbf{data} port, \textbf{event data} port, parameter access, data access and bus access. Each components contains some non-functional properties. The \textbf{thread} component includes priority, preemptive, dispatch protocol and time-related property. And \textbf{process} component is a composition unit of \textbf{thread} component, and includes all the resource of \textbf{thread} component. 
+Each category of the component includes the component type and component implementation. The type is a specification of the external interface. A component type contains features, flow specifications, property associations. A component type defines the communicational port, while component implementation specifies subcomponent and the interactive among the subcomponents. The features of AADL are designed to model the communication between different components. It is composed of \textbf{event} port, \textbf{data} port, \textbf{event data} port, parameter access, data access and bus access. Each component contains some non-functional properties. The \textbf{thread} component includes priority, preemptive, dispatch protocol, and time-related property. And \textbf{process} component is a composition unit of \textbf{thread} component, and includes all the resource of \textbf{thread} component. 
 
 %The component implementation must conform to their type which includes the detail contents such as refined type, sub-components, connections, flow, functional and non-functional properties. 
 
@@ -45,7 +45,7 @@ In AADL, the pre-defined property set includes \emph{deployment\_properties}, wh
 \begin{enumerate}
 \item $\mathcal{S}_{Comp}$ is a set of application software components.
 \item $\mathcal{H}_{Platform}$ is a set of hardware components.
-\item $\Sigma\mathcal{B}_{S,H}$ holistic binding relation space between software components and hardware components.
+\item $\Sigma\mathcal{B}_{S,H}$ is holistic binding relation space between software components and hardware components.
 \end{enumerate}
 
 Here, \emph{bind} is a function mapping application software component and the connection among application software components to execution platform (hardware) component. 
@@ -54,7 +54,7 @@ $\mathcal{B}: \mathcal{S}\times\mathcal{H}\rightarrow \mathcal{E}$
 \end{center}
 
 Multiple application software components can execute on the same \textbf{processor} component or \textbf{memory}, and multiple connections between application software components can be bound to the same \textbf{bus} component. 
-But at the same time, only one application software component can only execute on one \textbf{processor} component or \textbf{memory} component and only one connection between application software components can be bound to one \textbf{bus} component. 
+However, at the same time, only one application software component can only execute on one \textbf{processor} component or \textbf{memory} component and only one connection between application software components can be bound to one \textbf{bus} component. 
 
  In AADL meta-model, $AbstractPort$, as a set of communicational unit, extends $Feature$, and it is extended by $PortGroup$, $Port$ and $Parameter$. Also, according to the type of port, communicating ports are divided into three categories:  $EventPort$, $DataPort$ and $EventDataPort$. So, we define a feature as a tuple: $\mathcal{F} = <\mathcal{P}_{G}, \mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}, \mathcal{P}_{Param}>$, where $\mathcal{P}_{G}$ is a set of $PortGroup$,  $\mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}$ event port, data port and event data port respectively, and $\mathcal{P}_{Param}$ parameter port.
 
@@ -65,14 +65,14 @@ An AADL design is a six tuples $<Comp, Port, Connection, Property, Flow, Annex>$
 \begin{enumerate}
 \item Comp is a set of components.
 \item Port is a set of data port, event port and data event port.
-\item Connection is a mapping from one port to another port in different component.
+\item Connection is a mapping from one port to another port in a different component.
 \item Property is a set of non-functional feature.
 \item Flow is a set of connection between different components. 
 \item Annex is a set of the extensions of AADL.
 \end{enumerate}
 
 
-%We define the operator for the different element in the AADL design.
+%We define the operator for the different elements in the AADL design.
 
 %$\emph{Assign}$ is use to map the element to Comp.
 %\begin{enumerate}
@@ -88,12 +88,12 @@ An AADL design is a six tuples $<Comp, Port, Connection, Property, Flow, Annex>$
 
 \section{SysML}
 
-As for complex system, a kind of language is hard to cover all aspect of the actual systems. So, it need a methodology to describe the different aspect. SysML is designed to cover multi-view modelling. There are some tools based on SysML and those tools emphasise one specific domain. {\color{red}Cappela[?] presents a methodology to define, design, analyse, and validate systems with software and hardware architecture.}  We define a SysML as a tuple $<\mathcal{C}_{Fun}, \mathcal{C}_{Log}, \mathcal{C}_{Phy}, Port, Conn>$ where,
+As for the complex system, a kind of language is hard to cover all aspect of the actual systems. So, it needs a methodology to describe the different aspect. SysML is designed to cover multi-view modeling. There are some tools based on SysML, and those tools emphasize one specific domain. {\color{red}Cappela[?] presents a methodology to define, design, analyze, and validate systems with software and hardware architecture.}  We define a SysML as a tuple $<\mathcal{C}_{Fun}, \mathcal{C}_{Log}, \mathcal{C}_{Phy}, Port, Conn>$ where,
 \begin{enumerate}
 \item $\mathcal{C}_{Fun}, \mathcal{C}_{Log}, \mathcal{C}_{Phy}$ is a set of functional components, logical components and physical components respectively.
 \item $Port$ is a set of ports.
-\item $Conn$ is use to connect different components.
+\item $Conn$ is used to connect different components.
 \end{enumerate}
 
-It provides a hierarchical structure with functional components, logical components, physical components. Functional components deploy into logical components and logical components deploy into physical components. Here, we define $allocate$ as an operator to describe the relationship of functional components with physical components. Formally, an $allocate$ operator is defined as a tuple: $<\mathcal{C}_{Fun}, \mathcal{C}_{Phy}>$
+It provides a hierarchical structure with functional components, logical components, physical components. Functional components deploy into logical components, and logical components deploy into physical components. Here, we define $allocate$ as an operator to describe the relationship of functional components with physical components. Formally, an $allocate$ operator is defined as a tuple: $<\mathcal{C}_{Fun}, \mathcal{C}_{Phy}>$
 
