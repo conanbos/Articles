@@ -1,24 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
-     % if you need a4paper
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
-                                                          % paper
-
-\IEEEoverridecommandlockouts                              % This command is only
-                                                          % needed if you want to
-                                                          % use the \thanks command
-\overrideIEEEmargins
+%\documentclass[draftcls,conference]{IEEEtran}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+%\overrideIEEEmargins
 % See the \addtolength command later in the file to balance the column lengths
 % on the last page of the document
-
-
-
-
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{indentfirst}
+\usepackage[colorlinks=true,citecolor=green]{hyperref}
+\usepackage{color}
+\definecolor{Violet} {HTML} {7040A0}                                % use the \thanks command
 % The following packages can be found on http:\\www.ctan.org
-\usepackage{graphics} % for pdf, bitmapped graphics files
 %\usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
@@ -26,13 +17,32 @@
 \usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{amsfonts}
 \usepackage{amsthm}
-\usepackage{color}
 \usepackage{url}
+%\usepackage{enumitem}
+
+
+\ifCLASSINFOpdf   % for pdf, bitmapped graphics files
+   \usepackage[pdftex]{graphicx}     
+   % declare the path(s) where your graphic files are       
+   \graphicspath{{img/}}    
+   % and their extensions so you won't have to specify these with    
+   % every instance of \includegraphics      
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}   
+ \else   
+   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx     
+   % will default to the driver specified in the system graphics.cfg if no   % driver is specified.    
+   \usepackage[dvips]{graphicx}   
+   \DeclareGraphicsExtensions{.eps}   
+\fi
+
+
+
 
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 
+\setlength\parindent{0pt}
 
 \title{\LARGE \bf
 Collaborative Design: Practice in AADL 
@@ -98,7 +108,8 @@ Collaborative Design: Practice in AADL
 %\begin{thebibliography}{99}
 
 %\end{thebibliography}
-
+\bibliographystyle{IEEEtran}
+\bibliography{bib/GENBIB}
 
 
 

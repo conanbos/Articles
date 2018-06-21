@@ -18,7 +18,8 @@ In AADL, each element in category of the component includes the component type a
 
 
 
-In AADL, application software components communicate each other and they rely on the processor, memory and bus of execution platform component. Even they may interactive with device components. A \textbf{application software} component is a seven tuples $\mathcal{A} = <Type, Impl, \Sigma_{T, I}, Port, Property, Flow,  Annex>$ where:
+In AADL, application software components communicate each other and they rely on the processor, memory and bus of execution platform component. Even they may interactive with device components. 
+\defn{(Software Functional Composition)} A \textbf{SFC} is a seven tuples:\\ $\mathcal{A} = <Type, Impl, \Sigma_{T, I}, Port, Property, Flow,  Annex>$ \\where:
 \begin{enumerate}
 \item $Type$ defines the category of the components. 
 \item $Impl = <Sub, Conn>$ is the corresponding specific implementation of a component type. And each implementation includes the deployment of subcomponents and connections.
@@ -30,7 +31,8 @@ In AADL, application software components communicate each other and they rely on
 \end{enumerate}
 
 
-AADL component model is an abstract of actual systems. So, all the application software components finally run on execution platform component and the connections between application software component are bound to \textbf{bus} component.  A \textbf{execution platform} component is defined as a six tuples $\mathcal{E} = <Type, Impl, \Sigma_{T, I}, BusAccess, Property, Annex>$ where: 
+AADL component model is an abstract of actual systems. So, all the application software components finally run on execution platform component and the connections between application software component are bound to \textbf{bus} component.  
+\defn{(Execution Platform)} A \textbf{EP} component is defined as a six tuples:\\ $\mathcal{E} = <Type, Impl, \Sigma_{T, I}, BusAccess, Property, Annex>$ \\where: 
 \begin{enumerate}
 \item $BusAccess$ defines the interactive approach between \textbf{bus} component and other execution platform components.
 \item $Property$ is a set of non-functional feature.
@@ -41,35 +43,36 @@ AADL component model is an abstract of actual systems. So, all the application s
 \end{enumerate}
 
 
-In AADL, the pre-defined property set includes \emph{deployment\_properties}, which is used to describe the deployment relationship from software component to execution platform component. Here, we defines $\emph{bind}$ as an operator between application software components and execution platform components. In the system with multiple processors, \emph{bind} is a tuple $\mathcal{B} = <\mathcal{S}_{Comp}, \mathcal{H}_{Platform}, \Sigma\mathcal{B}_{S,H}>$, where
+In AADL, the pre-defined property set includes \emph{deployment\_properties}, which is used to describe the deployment relationship from software component to execution platform component. Here, we defines $\emph{bind}$ as an operator between application software components and execution platform components. 
+\defn{(Binding)} In the system with multiple processors, \emph{bind} is a tuple: $\mathcal{B} = <SFC, EP, \Sigma\mathcal{B}_{S,E}>$, where
 \begin{enumerate}
-\item $\mathcal{S}_{Comp}$ is a set of application software components.
-\item $\mathcal{H}_{Platform}$ is a set of hardware components.
-\item $\Sigma\mathcal{B}_{S,H}$ is holistic binding relation space between software components and hardware components.
+\item $SFC$ is a set of application software components.
+\item $EP$ is a set of hardware components.
+\item $\Sigma\mathcal{B}_{S,E}$ is holistic binding relation space between software components and hardware components.
 \end{enumerate}
 
-Here, \emph{bind} is a function mapping application software component and the connection among application software components to execution platform (hardware) component. 
-\begin{center}
-$\mathcal{B}: \mathcal{S}\times\mathcal{H}\rightarrow \mathcal{E}$
-\end{center}
+%Here, \emph{binding} is a function mapping software components and the connections among application software components to execution platform (hardware) component. 
+%\begin{center}
+%$\mathcal{B}: \mathcal{S}\times\mathcal{H}\rightarrow \mathcal{E}$
+%\end{center}
 
 Multiple application software components can execute on the same \textbf{processor} component or \textbf{memory}, and multiple connections between application software components can be bound to the same \textbf{bus} component. 
-However, at the same time, only one application software component can only execute on one \textbf{processor} component or \textbf{memory} component and only one connection between application software components can be bound to one \textbf{bus} component. 
+However, at the same time, the execution platform has limited resources, it can only support software components with restricted rules. Overmany request resources lead to conflicts.
 
- In AADL meta-model, $AbstractPort$, as a set of communicational unit, extends $Feature$, and it is extended by $PortGroup$, $Port$ and $Parameter$. Also, according to the type of port, communicating ports are divided into three categories:  $EventPort$, $DataPort$ and $EventDataPort$. So, we define a feature as a tuple: $\mathcal{F} = <\mathcal{P}_{G}, \mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}, \mathcal{P}_{Param}>$, where $\mathcal{P}_{G}$ is a set of $PortGroup$,  $\mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}$ event port, data port and event data port respectively, and $\mathcal{P}_{Param}$ parameter port.
-
-
+ %In AADL meta-model, $AbstractPort$, as a set of communicational unit, extends $Feature$, and it is extended by $PortGroup$, $Port$ and $Parameter$. Also, according to the type of port, communicating ports are divided into three categories:  $EventPort$, $DataPort$ and $EventDataPort$. So, we define a feature as a tuple: $\mathcal{F} = <\mathcal{P}_{G}, \mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}, \mathcal{P}_{Param}>$, where $\mathcal{P}_{G}$ is a set of $PortGroup$,  $\mathcal{P}_{E}, \mathcal{P}_{D}, \mathcal{P}_{ED}$ event port, data port and event data port respectively, and $\mathcal{P}_{Param}$ parameter port.
 
 
-An AADL design is a six tuples $<Comp, Port, Connection, Property, Flow, Annex>$ where:
-\begin{enumerate}
-\item Comp is a set of components.
-\item Port is a set of data port, event port and data event port.
-\item Connection is a mapping from one port to another port in a different component.
-\item Property is a set of non-functional feature.
-\item Flow is a set of connection between different components. 
-\item Annex is a set of the extensions of AADL.
-\end{enumerate}
+
+
+%An AADL design is a six tuples $<Comp, Port, Connection, Property, Flow, Annex>$ where:
+%\begin{enumerate}
+%\item Comp is a set of components.
+%\item Port is a set of data port, event port and data event port.
+%\item Connection is a mapping from one port to another port in a different component.
+%\item Property is a set of non-functional feature.
+%\item Flow is a set of connection between different components. 
+%\item Annex is a set of the extensions of AADL.
+%\end{enumerate}
 
 
 %We define the operator for the different elements in the AADL design.

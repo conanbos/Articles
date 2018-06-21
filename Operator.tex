@@ -1,4 +1,16 @@
 \section{Operators}
+\subsection{Definition of aspect model}
+A system includes a series of aspects and each aspect consist of several metamodels. We defined a aspect model as a 3-tuple, it contains abstract syntax, semantics, and model type:
+\begin{center}
+	$AS \circeq \langle S_{abs}, Sem, M_{t}\rangle $
+\end{center}
+where $S_{abs}$ is abstract syntax of the language that is described the aspect model as a language, it could be any modeling language that we usually used such as SysML. $Sem$ is semantics. $M_{t}$ is exact model type. For non-ambiguous reason, we simply denote them as  $S_{abs}, Sem, M_{t}$.
+
+The abstract syntax $S_{abs}$ is at the high-level (M3) in MOF hierarchical system. we specify abstract syntax as metamodel.   
+
+\subsection{(Composited Component)}
+
+From overall point of view, the aspect consist of a set of relevant elements,  
 
 \subsection{allocation}
 In SysML, Allocate is a mechanism to associate elements of the different type or in different hierarchies. It is also a stereotype of a UML4SysML:: Abstraction that is used between any two namedElements and dedicates to enabling allocations to identify the sources and targets. (\textbf{see figure}) 
@@ -7,9 +19,7 @@ AADL is an architecture language for the specification, analysis, automated inte
 
 The AADL has defined software components and execution platform components. specify which processor schedules and executes a thred, and memeory components in which executable code (process components) and data reside.
 
-\begin{defn}
-Deere
-\end{defn}
+\defn{(Functional MM)} we denote 
 
 
 
