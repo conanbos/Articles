@@ -1,51 +1,59 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = xelatex
+
 %\documentclass[draftcls,conference]{IEEEtran}
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 %\overrideIEEEmargins
 % See the \addtolength command later in the file to balance the column lengths
 % on the last page of the document
-\usepackage[table,xcdraw]{xcolor}
+
 \usepackage{indentfirst}
-\usepackage[colorlinks=true,citecolor=green]{hyperref}
-\usepackage{color}
-\definecolor{Violet} {HTML} {7040A0}                                % use the \thanks command
-% The following packages can be found on http:\\www.ctan.org
-%\usepackage{epsfig} % for postscript graphics files
-%\usepackage{mathptmx} % assumes new font selection scheme installed
-%\usepackage{times} % assumes new font selection scheme installed
+\usepackage[colorlinks=true,citecolor=red]{hyperref}
+                         
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{amsfonts}
 \usepackage{amsthm}
-\usepackage{url}
-%\usepackage{enumitem}
+\usepackage{pstricks}
+\usepackage{fontspec, xunicode, xltxtra}
+\usepackage{subfigure}
+\usepackage{listings}
+\lstset{
+    frameround=fttf,
+    basicstyle=\ttfamily,
+    columns=flexible ,
+    breaklines=true,       
+    numbers=left,                                        % 在左侧显示行号
+    frame=lines,                                          % 显示背景边框,不显示=none
+    framextopmargin=1pt,
+    captionpos=b,
+    %backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\footnotesize\color{darkgray},           		 % 设定行号格式
+    numbersep=3pt,  									%设置行号与代码的距离，默认是5pt
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    %language=c,                                        % 设置语言
+    %morekeywords={Import, from, Operator, Apply, End, def, =, ==, then,},
+    %emph={source, target, ObjCombine, PortAllocate, },
+    %emphstyle=\color{Violet}, 
+    morecomment=[l]{--},							%添加注释
+}
 
 
-\ifCLASSINFOpdf   % for pdf, bitmapped graphics files
-   \usepackage[pdftex]{graphicx}     
-   % declare the path(s) where your graphic files are       
-   \graphicspath{{img/}}    
-   % and their extensions so you won't have to specify these with    
-   % every instance of \includegraphics      
-   \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}   
- \else   
-   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx     
-   % will default to the driver specified in the system graphics.cfg if no   % driver is specified.    
-   \usepackage[dvips]{graphicx}   
-   \DeclareGraphicsExtensions{.eps}   
-\fi
 
-
-
-
+%\def \qed {\hfill \vrule height6pt width 6pt depth 0pt} %产生证明结束的方块
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
+\newcounter{defncounter}
+\setcounter{defncounter}{2}
+\newtheorem{defn}{Definition}[defncounter]
 
-\setlength\parindent{0pt}
-
+%\setlength{\parindent}{1.5em}
 \title{\LARGE \bf
-Collaborative Design: Practice in AADL 
+Collaborative design: Explore CPSs analysis capabilities of SysML-based tools with AADL and Hybrid Annex
 }
 
 %\author{ \parbox{3 in}{\centering Huibert Kwakernaak*
@@ -63,13 +71,23 @@ Collaborative Design: Practice in AADL
 %         {\tt\small pmisra@cs.wright.edu}}
 %}
 
-\author{Hui ZHAO, TengFei LI}
+%\author{Hui ZHAO, TengFei LI}
+%\author{\IEEEauthorblockN{Hui Zhao}
+%\IEEEauthorblockA{Universit\'e C\^ote d'Azur, I3S, INRIA\\
+%hui.zhao@inria.fr}%2004 Route des Lucioles,Valbonne, 06902, France\\
 
-
-
+%\and
+%\IEEEauthorblockN{Fr\'ed\'eric Mallet}
+%\IEEEauthorblockA{Universit\'e C\^ote d'Azur, I3S, INRIA, UMR 7271 CNRS\\
+%frederic.mallet@inria.fr}
+%\and
+%\IEEEauthorblockN{Ludovic Apvrille}
+%\IEEEauthorblockA{LTCI, Telecom ParisTech, Universit\'e Paris Saclay.\\
+%ludovic.apvrille@telecom-paristech.fr}
+%\thanks{This work was financially Supported by the CLARITY project and by a UCN@Sophia Labex scholarship.}}
 
 \begin{document}
-
+%\watermark{60}{10}{DRAFT}%水印
 
 
 \maketitle
@@ -78,10 +96,14 @@ Collaborative Design: Practice in AADL
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{Abstract.tex}
-\input{Introduction.tex}
-\input{AADL.tex}
-\input{Operator.tex}
+\input{Abstract}
+\input{Introduction}
+\input{Relatedwork}
+\input{Approach}
+\input{Transformation}
+\input{CaseStudy}
+\input{Discussion}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
