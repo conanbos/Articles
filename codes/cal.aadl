@@ -1,0 +1,33 @@
+\begin{lstlisting}[caption={An example of setting of scheduling properites},label=code:cal]
+thread implementation synchronizer.impl 
+	properties
+	Dispatch_Protocol => perodic;
+	Period => 100 ms;
+	Deadline => 100 ms;
+	Compute_Execution_Time => 50..60ms;
+end synchronizer.impl;
+
+thread implementation calalculating.impl 
+	properties
+	Dispatch_Protocol => perodic;
+	Period => 100 ms;
+	Deadline => 100 ms;
+	Compute_Execution_Time => 30ms..40ms;
+end calalculating.impl;
+
+thread implementation gps.position 
+	properties
+	Dispatch_Protocol => perodic;
+	Period => 40 ms;
+	Deadline => 40 ms;
+	Compute_Execution_Time => 30ms..40ms;
+end gps.position;
+
+thread implementation HMI.setting
+	properties
+	Dispatch_Protocol => perodic;
+	Period => 30 ms;
+	Deadline => 30 ms;
+	Compute_Execution_Time => 20ms..30ms;
+end HMI.setting;
+\end{lstlisting}

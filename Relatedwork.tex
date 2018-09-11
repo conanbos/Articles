@@ -1,0 +1,20 @@
+
+\section{Related work}\label{sec:rw}
+A considerable number of studies have been proposed regarding extending UML-like profile to AADL and model transformation methods. This section provides a brief introduction to these works. 
+
+An approach for translating UML/MARTE detailed design into AADL design has proposed by Brun et al.~\cite{brun2008uml}. Their work focuses on the transformation of the thread execution and communication semantics and does not cover the transformation of the embedded system component, such as device parts. Similarly, in~\cite{turki2010mapping}, Turki et al. proposed a methodology for mapping MARTE model elements to AADL component. They focus on the issues related to modeling architecture, and the syntactic differences between AADL and MARTE are well handled by the transformation rules provided by ATL tool, yet they did not consider issues related to the mapping of MARTE properties to AADL property. 
+In \cite{Ouni:2016td}, Ouni et al. presented an approach for transformation of Capella to AADL models target to cover the various levels of abstraction, they take into account the system behavior and the hardware/software mapping. However, the formal definition and rigorous syntactic of transformation rules are missed. 
+
+The scientists have proposed some specific methods to weave the models as well as metamodels formally such as~\cite{Jezequel:2008ik}, Degueule has proposed Melange, a language dedicated to merging languages~\cite{degueule2015melange}, and similar works like~\cite{ramos2007matching}. However, the structural properties are not supported.  
+
+Behjati et al. describe how they combined SysML and AADL in~\cite{behjati2011extending} and provided a common modeling language (in the form of the ExSAM profile) for specifying embedded systems at different abstraction levels. De Saqui-Sannes et al. \cite{de2012combining} presented an MBE with TTool and AADL at the software level and demonstrated with flight management system. Both of their works do not provide the description in a formal way.
+
+
+Compared with current studies, the approach proposed in this paper has the following features:
+\begin{enumerate}
+    \item Arcadia is chosen as the transformation source. Arcadia provides a broad view of system engineering as well as refined functional and physical views.
+    \item A proper subset of AADL and its hybrid annex have been chosen as the transformation target including functional software composition, execution platform and the Hybrid annex which is usually used to describe continuous behaviors in a Cyber-Physical System.
+    \item All of the transformations is considered at metamodel level, and then a generated synthesized metamodel can be used to create concrete AADL models for further analysis.     
+    \item Translational rules were defined in good form formally, and then it is readable by human and easier to verify the correctness of transformation.
+\end{enumerate}
+

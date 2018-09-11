@@ -1,0 +1,52 @@
+\begin{lstlisting}[caption={Train traction control unit implementation with hybrid annex specifications in AADL},label=code:aadl,float=*tp]
+system TractionControlUnit
+	features
+		speed: in data port speed;
+		maps: in data port maps;
+		position: in data port position;
+		acc_coef: out data port votingResult;
+		alarm: out data port votingResult;
+		acceleration: in event data port command;
+		...
+end TractionControlUnit;
+
+system implementation TractionControlUnit.impl
+	subcomponents
+		computing: process computation.impl;
+		Voting: process voting.impl;
+		restrictedCondition: process RestrctedCondition.impl;
+	connections
+		c_sc: port speed -> computing.speed;
+		c_ac: port acceleration -> computing.acceleration;
+		c_mrin: port maps -> restrictedCondition.maps;
+		c_prin: port position -> restrictedCondition.position;
+		c_rv: port restrictedCondition.restriction -> Voting.restriction;
+		c_cv: port computing.result -> Voting.result;
+		c_vd: port Voting.outOfRange -> alarm;
+		c_vl: port Voting.acc_coef -> locomotive;
+		...
+			
+annex hybrid {**
+		assert
+			<< SafeSpeed :: (speed@now < limit_speed) and (speed@now >= limit_speed) >>
+		invariant
+			<< SafeSpeed () >>
+		variables
+			P : TS :: TractiveEffort --the tractive effort of the locomotive;
+			Q : TS :: Drag --the drag in newton;
+			B : TS :: Brake --the brake force;
+			a : TS :: Angle --the angle of train
+			alpha : TS :: Gradient --the gradient
+			limit_speed : TS :: limitSpeed --max speed of train
+			s : TS :: Speed --current speed
+		constants
+			m= 2000 -- mass value
+		behavoir
+			alpha ::= sin(a) 
+			Acc ::= 'DT 1 m*dv/dt=(P-Q-m*g*alpha)' [[> out_coef ]]> Next
+			Des ::= 'DT 1 m*dv/dt=(P-(Q+B)-m*g*alpha)' [[> out_coef ]]> Next
+			Next ::= skip
+			Traction ::= speed_p?(s) & (s>limit_speed) -> Des
+			**};
+end TractionControlUnit.impl;
+\end{lstlisting}
